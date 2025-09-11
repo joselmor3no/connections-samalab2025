@@ -1,0 +1,49 @@
+version: "3.1"
+services:
+    postgres:
+        image: postgres:16
+        container_name: connections_samalabpostgres
+        ports:
+            - "5434:5432"
+        environment:
+            POSTGRES_DB: admin_connections_samalab
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - ./postgres_data:/var/lib/postgresql/pgdata
+            - ./initdb:/docker-entrypoint-initdb.d
+        networks:
+            - connections_samalab2
+    www:
+        build: .
+        container_name: cwww
+        ports: 
+            - "80:80"
+        volumes:
+            - ./www:/var/www/html
+            - ./logs:/var/log/apache2
+        depends_on:
+            - postgres
+        networks:
+            - connections_samalab2
+    phppgadmin:
+        image: dpage/pgadmin4:8.6
+        container_name: connections_samalabphppgadmin
+        ports:
+            - 8001:80
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@admin.com
+            PGADMIN_DEFAULT_PASSWORD: admin
+            PGADMIN_LISTEN_ADDRESS: 0.0.0.0
+            PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: 'False'
+        depends_on:
+            - postgres
+        volumes:
+            - ./db_imports:/var/lib/pgadmin
+        networks:
+            - connections_samalab2
+networks:
+    connections_samalab2:
+
+volumes:
+    postgres_data:

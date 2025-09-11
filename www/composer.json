@@ -1,0 +1,16 @@
+{
+    "name": "root/connections",
+    "autoload": {
+        "psr-4": {
+            "Root\\Connections\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jl"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^8.2"
+    }
+}

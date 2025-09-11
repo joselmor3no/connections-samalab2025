@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>assets/js/catalogos/paquetes.js</url>
+            <bookmark id="1">
+                <name/>
+                <line>157</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>model/catalogos/Paquetes.php</url>
+            <bookmark id="2">
+                <name/>
+                <line>128</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Monse/Documents/connections/view/catalogos/lista.php</file>
+            <file>file:/C:/Users/Monse/Documents/connections/model/catalogos/Listas.php</file>
+            <file>file:/C:/Users/Monse/Documents/connections/view/_blocks/header.php</file>
+            <file>file:/C:/Users/Monse/Documents/connections/db/observaciones.txt</file>
+            <file>file:/C:/Users/Monse/Documents/connections/reporte-lista-precio.php</file>
+        </group>
+    </open-files>
+</project-private>

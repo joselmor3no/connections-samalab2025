@@ -1,0 +1,344 @@
+/* CSS File 
+  ===================
+    Item Name: Enter - Login and Register HTML5 Template
+    Author: Ashish Maraviya
+    Version: 1.0
+    Copyright 2020 - 2021
+===================*/
+/*------------------------------------------------------------------
+  [ Master css file, Table of contents ]
+  
+  00. General css
+  01. Page css
+  
+------------------------------------------------------------*/
+/*------------------------------------------------------------------
+  # [Color codes]
+    basic-color: #611b96;
+    secondary-color: #b974ed;
+    third-color: #8e2dd8;
+# */
+/*------------------------------------------------------------------
+  [Typography]
+  
+  Body copy:      font-family: 'Lato', sans-serif;
+-------------------------------------------------------------------*/
+/**  00. General css **/
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  background-image: url("../img/pac.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  background-color: rgba(226, 219, 219, 0.7); }
+
+/**  01. Page css **/
+canvas {
+  height: 100vh !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  position: fixed; }
+
+.login-page-main {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  z-index: 2;
+  background-color: #fff !important; }
+  .login-page-main .copyright {
+    position: absolute;
+    bottom: 0;
+    color: #777; }
+
+.login-page {
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .login-page .text-detail {
+    text-align: center;
+    position: absolute; }
+    .login-page .text-detail h1 {
+      font-size: 45px;
+      font-weight: 800;
+      color: #555;
+      margin-bottom: 20px; }
+      .login-page .text-detail h1 span {
+        color: #b974ed; }
+    .login-page .text-detail p {
+      color: #888;
+      margin-bottom: 30px; }
+    .login-page .text-detail .signup-btn {
+      text-align: center;
+      margin: 0 3px; }
+      .login-page .text-detail .signup-btn a {
+        background-color: #b974ed;
+        color: white;
+        padding: 8px 15px;
+        margin: 8px 0;
+        cursor: pointer;
+        width: 85px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 20px;
+        border: 2px solid transparent;
+        outline: 1px solid transparent;
+        text-decoration: none;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out; }
+        .login-page .text-detail .signup-btn a:hover {
+          background-color: #8e2dd8; }
+    .login-page .text-detail .imgcontainer img {
+      width: 200px;
+      margin-bottom: 50px; }
+  .login-page .form-position {
+    padding: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center; }
+  .login-page .login-form, .login-page .forgot-form {
+    width: 350px; }
+  .login-page .signup-form {
+    width: 450px; }
+  .login-page .login-form, .login-page .signup-form, .login-page .forgot-form {
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    z-index: 2;
+    position: relative; }
+    .login-page .login-form h2, .login-page .signup-form h2, .login-page .forgot-form h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #555;
+      text-align: center;
+      margin: 15px 0; }
+    .login-page .login-form p, .login-page .signup-form p, .login-page .forgot-form p {
+      text-align: center;
+      color: #868686; }
+    .login-page .login-form .imgcontainer, .login-page .signup-form .imgcontainer, .login-page .forgot-form .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative; }
+    .login-page .login-form .input-control, .login-page .signup-form .input-control, .login-page .forgot-form .input-control {
+      padding: 15px 30px 30px 30px;
+      position: relative; }
+      .login-page .login-form .input-control .p-l-5, .login-page .signup-form .input-control .p-l-5, .login-page .forgot-form .input-control .p-l-5 {
+        padding-left: 5px; }
+      .login-page .login-form .input-control .p-r-5, .login-page .signup-form .input-control .p-r-5, .login-page .forgot-form .input-control .p-r-5 {
+        padding-right: 5px; }
+      .login-page .login-form .input-control .p-l-10, .login-page .signup-form .input-control .p-l-10, .login-page .forgot-form .input-control .p-l-10 {
+        padding-left: 10px; }
+      .login-page .login-form .input-control .p-r-10, .login-page .signup-form .input-control .p-r-10, .login-page .forgot-form .input-control .p-r-10 {
+        padding-right: 10px; }
+      .login-page .login-form .input-control input[type=text], .login-page .login-form .input-control input[type=email], .login-page .login-form .input-control input[type=password], .login-page .signup-form .input-control input[type=text], .login-page .signup-form .input-control input[type=email], .login-page .signup-form .input-control input[type=password], .login-page .forgot-form .input-control input[type=text], .login-page .forgot-form .input-control input[type=email], .login-page .forgot-form .input-control input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border-bottom: 2px solid #ccc;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        box-sizing: border-box;
+        border-radius: 30px;
+        font-size: 14px;
+        color: #666;
+        background-color: #f8f8f8;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out; }
+        .login-page .login-form .input-control input[type=text]:focus, .login-page .login-form .input-control input[type=email]:focus, .login-page .login-form .input-control input[type=password]:focus, .login-page .signup-form .input-control input[type=text]:focus, .login-page .signup-form .input-control input[type=email]:focus, .login-page .signup-form .input-control input[type=password]:focus, .login-page .forgot-form .input-control input[type=text]:focus, .login-page .forgot-form .input-control input[type=email]:focus, .login-page .forgot-form .input-control input[type=password]:focus {
+          border-radius: 30px;
+          border-bottom: 2px solid #611b96;
+          outline: none !important; }
+      .login-page .login-form .input-control .password-field-show, .login-page .signup-form .input-control .password-field-show, .login-page .forgot-form .input-control .password-field-show {
+        position: relative;
+        display: block; }
+        .login-page .login-form .input-control .password-field-show .field-icon, .login-page .signup-form .input-control .password-field-show .field-icon, .login-page .forgot-form .input-control .password-field-show .field-icon {
+          position: absolute;
+          top: 23px;
+          right: 10px;
+          z-index: 2;
+          color: #868686; }
+      .login-page .login-form .input-control .label-container, .login-page .signup-form .input-control .label-container, .login-page .forgot-form .input-control .label-container {
+        display: inline-block;
+        position: relative;
+        padding-left: 30px;
+        margin: 12px 0;
+        cursor: pointer;
+        font-size: 14px;
+        color: #868686;
+        line-height: 23px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out; }
+        .login-page .login-form .input-control .label-container a, .login-page .signup-form .input-control .label-container a, .login-page .forgot-form .input-control .label-container a {
+          color: #611b96;
+          font-weight: 600; }
+        .login-page .login-form .input-control .label-container:hover input ~ .checkmark, .login-page .signup-form .input-control .label-container:hover input ~ .checkmark, .login-page .forgot-form .input-control .label-container:hover input ~ .checkmark {
+          background-color: #3c3c3c;
+          -webkit-transition: all .3s ease-in-out;
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out; }
+        .login-page .login-form .input-control .label-container input[type=checkbox], .login-page .signup-form .input-control .label-container input[type=checkbox], .login-page .forgot-form .input-control .label-container input[type=checkbox] {
+          outline: 2px solid #868686;
+          -webkit-transition: all .3s ease-in-out;
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+          border-radius: 10px; }
+        .login-page .login-form .input-control .label-container .checkmark, .login-page .signup-form .input-control .label-container .checkmark, .login-page .forgot-form .input-control .label-container .checkmark {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          height: 20px;
+          width: 20px;
+          background-color: #fff;
+          outline: 2px solid transparent;
+          border: 2px solid #cccccc;
+          border-radius: 10px; }
+          .login-page .login-form .input-control .label-container .checkmark:after, .login-page .signup-form .input-control .label-container .checkmark:after, .login-page .forgot-form .input-control .label-container .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg); }
+        .login-page .login-form .input-control .label-container input:checked ~ .checkmark, .login-page .signup-form .input-control .label-container input:checked ~ .checkmark, .login-page .forgot-form .input-control .label-container input:checked ~ .checkmark {
+          background-color: #611b96; }
+        .login-page .login-form .input-control .label-container input:checked ~ .checkmark:after, .login-page .signup-form .input-control .label-container input:checked ~ .checkmark:after, .login-page .forgot-form .input-control .label-container input:checked ~ .checkmark:after {
+          display: block; }
+      .login-page .login-form .input-control span.psw, .login-page .signup-form .input-control span.psw, .login-page .forgot-form .input-control span.psw {
+        float: right;
+        padding-top: 12px; }
+        .login-page .login-form .input-control span.psw a, .login-page .signup-form .input-control span.psw a, .login-page .forgot-form .input-control span.psw a {
+          font-size: 13px;
+          color: #611b96;
+          text-decoration: none;
+          -webkit-transition: all .3s ease-in-out;
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out; }
+          .login-page .login-form .input-control span.psw a:hover, .login-page .signup-form .input-control span.psw a:hover, .login-page .forgot-form .input-control span.psw a:hover {
+            color: #444; }
+      .login-page .login-form .input-control .login-btns, .login-page .signup-form .input-control .login-btns, .login-page .forgot-form .input-control .login-btns {
+        text-align: center; }
+        .login-page .login-form .input-control .login-btns button, .login-page .signup-form .input-control .login-btns button, .login-page .forgot-form .input-control .login-btns button {
+          background-color: #611b96;
+          color: white;
+          padding: 8px 15px;
+          margin: 8px 0;
+          cursor: pointer;
+          width: 85px;
+          font-size: 14px;
+          font-weight: 600;
+          border-radius: 20px;
+          border: 2px solid transparent;
+          outline: 1px solid transparent;
+          -webkit-transition: all .3s ease-in-out;
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out; }
+          .login-page .login-form .input-control .login-btns button:hover, .login-page .signup-form .input-control .login-btns button:hover, .login-page .forgot-form .input-control .login-btns button:hover {
+            background-color: transparent;
+            color: #611b96;
+            border: 2px solid #611b96; }
+      .login-page .login-form .input-control .division-lines, .login-page .signup-form .input-control .division-lines, .login-page .forgot-form .input-control .division-lines {
+        width: 100%;
+        position: relative;
+        display: block; }
+        .login-page .login-form .input-control .division-lines p, .login-page .signup-form .input-control .division-lines p, .login-page .forgot-form .input-control .division-lines p {
+          text-align: center;
+          width: 40%;
+          margin: 15px auto;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 600;
+          color: #aaa;
+          position: relative;
+          z-index: 2; }
+        .login-page .login-form .input-control .division-lines:before, .login-page .signup-form .input-control .division-lines:before, .login-page .forgot-form .input-control .division-lines:before {
+          content: '';
+          width: 30%;
+          height: 1px;
+          background: #e0e0e0;
+          position: absolute;
+          top: 8px;
+          right: 0;
+          margin: auto; }
+        .login-page .login-form .input-control .division-lines:after, .login-page .signup-form .input-control .division-lines:after, .login-page .forgot-form .input-control .division-lines:after {
+          content: '';
+          width: 30%;
+          height: 1px;
+          background: #e0e0e0;
+          position: absolute;
+          top: 8px;
+          left: 0;
+          margin: auto; }
+      .login-page .login-form .input-control .login-with-btns, .login-page .signup-form .input-control .login-with-btns, .login-page .forgot-form .input-control .login-with-btns {
+        text-align: center; }
+        .login-page .login-form .input-control .login-with-btns .google, .login-page .login-form .input-control .login-with-btns .facebook, .login-page .login-form .input-control .login-with-btns .twitter, .login-page .login-form .input-control .login-with-btns .linkedin, .login-page .signup-form .input-control .login-with-btns .google, .login-page .signup-form .input-control .login-with-btns .facebook, .login-page .signup-form .input-control .login-with-btns .twitter, .login-page .signup-form .input-control .login-with-btns .linkedin, .login-page .forgot-form .input-control .login-with-btns .google, .login-page .forgot-form .input-control .login-with-btns .facebook, .login-page .forgot-form .input-control .login-with-btns .twitter, .login-page .forgot-form .input-control .login-with-btns .linkedin {
+          width: 35px;
+          height: 35px;
+          margin: 8px 5px 8px 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid #c3c3c3;
+          border-radius: 30px;
+          background-color: transparent;
+          outline: 1px solid transparent;
+          -webkit-transition: all .2s ease-in-out;
+          -moz-transition: all .2s ease-in-out;
+          -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out; }
+          .login-page .login-form .input-control .login-with-btns .google i, .login-page .login-form .input-control .login-with-btns .facebook i, .login-page .login-form .input-control .login-with-btns .twitter i, .login-page .login-form .input-control .login-with-btns .linkedin i, .login-page .signup-form .input-control .login-with-btns .google i, .login-page .signup-form .input-control .login-with-btns .facebook i, .login-page .signup-form .input-control .login-with-btns .twitter i, .login-page .signup-form .input-control .login-with-btns .linkedin i, .login-page .forgot-form .input-control .login-with-btns .google i, .login-page .forgot-form .input-control .login-with-btns .facebook i, .login-page .forgot-form .input-control .login-with-btns .twitter i, .login-page .forgot-form .input-control .login-with-btns .linkedin i {
+            color: #c3c3c3;
+            font-size: 14px;
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out; }
+        .login-page .login-form .input-control .login-with-btns .google:hover, .login-page .signup-form .input-control .login-with-btns .google:hover, .login-page .forgot-form .input-control .login-with-btns .google:hover {
+          border: 2px solid #DB4437; }
+          .login-page .login-form .input-control .login-with-btns .google:hover i, .login-page .signup-form .input-control .login-with-btns .google:hover i, .login-page .forgot-form .input-control .login-with-btns .google:hover i {
+            color: #DB4437; }
+        .login-page .login-form .input-control .login-with-btns .facebook:hover, .login-page .signup-form .input-control .login-with-btns .facebook:hover, .login-page .forgot-form .input-control .login-with-btns .facebook:hover {
+          border: 2px solid #3b5998; }
+          .login-page .login-form .input-control .login-with-btns .facebook:hover i, .login-page .signup-form .input-control .login-with-btns .facebook:hover i, .login-page .forgot-form .input-control .login-with-btns .facebook:hover i {
+            color: #3b5998; }
+        .login-page .login-form .input-control .login-with-btns .twitter:hover, .login-page .signup-form .input-control .login-with-btns .twitter:hover, .login-page .forgot-form .input-control .login-with-btns .twitter:hover {
+          border: 2px solid #00acee; }
+          .login-page .login-form .input-control .login-with-btns .twitter:hover i, .login-page .signup-form .input-control .login-with-btns .twitter:hover i, .login-page .forgot-form .input-control .login-with-btns .twitter:hover i {
+            color: #00acee; }
+        .login-page .login-form .input-control .login-with-btns .linkedin:hover, .login-page .signup-form .input-control .login-with-btns .linkedin:hover, .login-page .forgot-form .input-control .login-with-btns .linkedin:hover {
+          border: 2px solid #0e76a8; }
+          .login-page .login-form .input-control .login-with-btns .linkedin:hover i, .login-page .signup-form .input-control .login-with-btns .linkedin:hover i, .login-page .forgot-form .input-control .login-with-btns .linkedin:hover i {
+            color: #0e76a8; }
+
+/*# sourceMappingURL=form-style.css.map */

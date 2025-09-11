@@ -1,0 +1,35 @@
+/* Responsive CSS File 
+  ===================
+    Item Name: Enter - Login and Register HTML5 Template
+    Author: Ashish Maraviya
+    Version: 1.0
+    Copyright 2020 - 2021
+===================*/
+@media screen and (max-width: 767px) {
+  .login-page .container {
+    padding: 15px; }
+  .login-page #signup-modal .modal-content {
+    max-width: 350px;
+    top: 15%; }
+  .login-page .modal .input-control input[type=text], .login-page .modal .input-control input[type=email], .login-page .modal .input-control input[type=password] {
+    padding: 10px 20px; } }
+@media screen and (max-width: 576px) {
+  .login-page .form-position .login-form, .login-page .form-position .forgot-form {
+    width: 290px; }
+  .login-page .form-position .signup-form {
+    width: 290px; }
+  .login-page .form-position .login-form .input-control .division-lines:before, .login-page .form-position .signup-form .input-control .division-lines:before {
+    width: 25%; }
+  .login-page .form-position .login-form .input-control .division-lines:after, .login-page .form-position .signup-form .input-control .division-lines:after {
+    width: 25%; }
+  .login-page .form-position .login-form .input-control .division-lines p, .login-page .form-position .signup-form .input-control .division-lines p {
+    width: 50%; } }
+@media screen and (max-width: 480px) {
+  .login-page .modal .input-control .division-lines p {
+    width: 45%; }
+  .login-page .modal .input-control .division-lines:after {
+    width: 25%; }
+  .login-page .modal .input-control .division-lines:before {
+    width: 25%; } }
+
+/*# sourceMappingURL=responsive-form-style.css.map */

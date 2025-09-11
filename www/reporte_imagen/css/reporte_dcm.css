@@ -1,0 +1,71 @@
+.row,.container-fluid,.col-7,.col-5,.col-12{
+	margin: 0px !important;
+	padding:1px !important;
+}
+
+body{
+	height:100vh;
+	width: 100%;
+	background:black;
+}
+
+.form-control{
+	background: #AAA;
+	border:solid 1px #111;
+}
+
+.ta_reporte{
+	height:74vh;
+}
+.ta_datos{
+	height:25vh;
+	overflow-y: scroll;
+	color:white;
+	border-radius:5px;
+}
+
+.note-editor.note-frame .note-editing-area .note-editable{
+	height: 65vh;
+}
+
+.ta_salida{
+	background: black;
+	height: 98vh;
+}
+.vistap{
+	height: 92vh;
+}
+
+.vista_documento{
+	height: 100%;
+	width: 98%;
+	background:white;
+	border-radius:5px;
+}
+
+.botonera{
+	width: 100%;
+	height:5vh;
+}
+
+.botonera button{
+	margin-top: 1vh;
+	width:100% !important;
+	height: 5vh;
+}
+
+
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    overflow-y: scroll;
+    background: grey;
+    box-shadow: inset 0 0 4px #707070;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+

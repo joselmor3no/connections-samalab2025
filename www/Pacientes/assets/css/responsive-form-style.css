@@ -1,0 +1,70 @@
+/* Responsive CSS File 
+  ===================
+    Item Name: Enter - Login and Register HTML5 Template
+    Author: Ashish Maraviya
+    Version: 1.0
+    Copyright 2020 - 2021
+===================*/
+@media screen and (max-width: 1366px) {
+  .login-page .login-form h2, .login-page .signup-form h2, .login-page .forgot-form h2 {
+    font-size: 26px; } }
+@media screen and (max-width: 992px) {
+  .login-page .signup-form {
+    max-width: 350px; }
+  .login-page .login-form h2, .login-page .signup-form h2, .login-page .forgot-form h2 {
+    font-size: 25px; }
+  .login-page .copyright {
+    font-size: 14px; }
+  .login-page .text-detail {
+    padding: 0 30px; }
+    .login-page .text-detail h1 {
+      font-size: 42px;
+      margin-bottom: 15px; }
+    .login-page .text-detail .imgcontainer img {
+      width: 190px;
+      margin-bottom: 40px; }
+    .login-page .text-detail p {
+      font-size: 14px; } }
+@media screen and (max-width: 767px) {
+  .login-page-main {
+    width: 100%;
+    min-height: 80vh !important;
+    position: relative; }
+
+  .login-page .text-detail h1 {
+    font-size: 38px; }
+  .login-page .text-detail .imgcontainer img {
+    width: 180px;
+    margin-bottom: 35px; }
+  .login-page #signup-modal .modal-content {
+    max-width: 350px;
+    top: 15%; }
+  .login-page .modal .input-control input[type=text], .login-page .modal .input-control input[type=email], .login-page .modal .input-control input[type=password] {
+    padding: 10px 20px; } }
+@media screen and (max-width: 576px) {
+  .login-page .text-detail h1 {
+    font-size: 32px; }
+  .login-page .text-detail .imgcontainer img {
+    width: 170px;
+    margin-bottom: 30px; }
+  .login-page .signup-form h2, .login-page .login-form h2, .login-page .forgot-form h2 {
+    font-size: 24px; }
+  .login-page .signup-form .input-control .division-lines:before, .login-page .login-form .input-control .division-lines:before, .login-page .forgot-form .input-control .division-lines:before {
+    width: 25%; }
+  .login-page .signup-form .input-control .division-lines:after, .login-page .login-form .input-control .division-lines:after, .login-page .forgot-form .input-control .division-lines:after {
+    width: 25%; }
+  .login-page .signup-form .input-control .division-lines p, .login-page .login-form .input-control .division-lines p, .login-page .forgot-form .input-control .division-lines p {
+    width: 50%; } }
+@media screen and (max-width: 480px) {
+  .login-page {
+    padding: 15px; }
+    .login-page .login-form h2, .login-page .signup-form h2, .login-page .forgot-form h2 {
+      font-size: 22px; } }
+@media screen and (max-width: 420px) {
+  .login-page .text-detail h1 {
+    font-size: 25px; }
+  .login-page .text-detail .imgcontainer img {
+    width: 150px;
+    margin-bottom: 30px; } }
+
+/*# sourceMappingURL=responsive-form-style.css.map */
