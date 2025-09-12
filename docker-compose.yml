@@ -16,7 +16,7 @@ services:
             - connections_samalab2
     www:
         build: .
-        container_name: cwww
+        container_name: connections_samalabwww
         ports: 
             - "80:80"
         volumes:
