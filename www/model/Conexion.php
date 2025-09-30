@@ -1,121 +1,165 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class Conexion {
 
-    private $servername = "localhost";
-    //mj
-    /* private $username = "mjdevelo_connections";
-      private $password = "conection$2021**";
-      private $databases = "mjdevelo_connections"; */
-    private $username = 'admin_connections';
-    private $password = 'Vmnl54#34';
-    private $databases = "admin_connections";
+    private $host = "connections_samalabpostgres"; // nombre del contenedor Docker
+    private $port = "5432";
+    private $username = "postgres";
+    private $password = "postgres";
+    private $database = "admin_connections";
     private $conn;
+
+    public function __construct() {
+        try {
+            $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->database}";
+            $this->conn = new PDO($dsn, $this->username, $this->password, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                PDO::ATTR_EMULATE_PREPARES => false // fuerza uso real de prepared statements
+            ]);
+
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            $_SESSION["ultimo_acceso"] = date("Y-m-d H:i:s");
+
+            // cambio de DB por dominio/cliente
+            $this->changeDB();
+
+        } catch (PDOException $e) {
+            die("❌ Error de conexión: " . $e->getMessage());
+        }
+    }
+
+    //  SELECT con parámetros
+    public function getQuery($sql, $params = []) {
+        try {
+            $stmt = $this->conn->prepare($sql);
+            if($stmt->execute($params)){
+                return $stmt->fetchAll();
+                
+            }
+            else{
+                print_r($stmt->errorInfo());
+            }
+                
+        } catch (PDOException $e) {
+            $this->logError($sql, $e->getMessage());
+            print_r($sql);
+             print_r($e->getMessage());
+            return [];
+        }
+    }
+     //----------- Como se utiliza esta funcion:
+     /* $sql = "SELECT * FROM usuarios WHERE edad > :edad";
+        $usuarios = $db->getQuery($sql, [":edad" => 25]); */
+
+
+
+    //  INSERT/UPDATE/DELETE con parámetros
+    public function setQuery($sql, $params = [], $tabla = null, $idTabla = null, $observaciones = null) {
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $ok = $stmt->execute($params);
+
+            // Solo si es insert/update/delete guardamos log
+            if ($ok && preg_match('/^(INSERT|UPDATE|DELETE)/i', trim($sql))) {
+                $this->logActivity($sql, $tabla, $idTabla, $observaciones);
+            }
+
+            return $ok;
+        } catch (PDOException $e) {
+            $this->logError($sql, $e->getMessage());
+            return false;
+        }
+    }
+    //----------- Como se utiliza esta funcion:
+    /* $db = new Conexion();
     
-    // $private $db_produccion ;
+        $tabla = "pacientes";
+        $sql = "INSERT INTO $tabla (nombre, edad) VALUES (:nombre, :edad)";
+        $params = [":nombre" => "Carlos", ":edad" => 33];
 
-    function __construct() {
-     
-        //Ultima petición
-        $_SESSION["ultimo_acceso"] = date("Y-m-d G:i:s"); //Ultima petición
-        //Cambio de conexion por cliente
-        if (isset($_SESSION["user_db"]) && $_SESSION["user_db"] != "") {
-            $this->username = $_SESSION["user_db"];
-            $this->databases = $_SESSION["db"];
-        }
-        
-        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->databases);
-        
-        
-        //Cambiar a db del dominio
-        $this->changeDB();
-      
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
-        if (!$this->conn->set_charset("utf8")) {
-            printf("Can't set utf8: %s\n", $this->conn->error);
-        }
-    }
+        $db->setQuery($sql, $params, $tabla, null, "Registro creado"); */
 
-    function getQuery($sql) {
-        $data = [];
+    private function logActivity($sql, $tabla, $idTabla, $observaciones = null) {
+        try {
+            $usuario = $_SESSION["usuario"] ?? "sistema";
+            $fecha = date("Y-m-d H:i:s");
 
-        if ($result = $this->conn->query($sql)) {
-            while ($row = $result->fetch_object()) {
-                $data[] = $row;
-            }
-            $result->close();
-        } else {
-            if (strpos(strtoupper($_SESSION["usuario"]), "CONNECTIONS") !== false) {
-                echo "Consulta fallida * $sql *: " . $this->conn->error."<br>";
-            }
-        }
-        return $data;
-    }
+            $query = "INSERT INTO log_activity (observaciones, tabla, id_tabla, usuario, fecha)
+                    VALUES (:observaciones, :tabla, :id_tabla, :usuario, :fecha)";
 
-    function setQuery($sql) {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ":observaciones" => $observaciones ?? $sql, // puedes guardar el SQL o un texto descriptivo
+                ":tabla" => $tabla,
+                ":id_tabla" => $idTabla,
+                ":usuario" => $usuario,
+                ":fecha" => $fecha
+            ]);
 
-        if ($this->conn->query($sql)) {
-            
-        } else {
-            if (strpos(strtoupper($_SESSION["usuario"]), "CONNECTIONS") !== false) {
-                echo "Consulta fallida * $sql *: " . $this->conn->error."<br>";
-            }
+        } catch (PDOException $e) {
+            // Si falla el log, no detiene la transacción principal
+            error_log("Fallo log_activity: " . $e->getMessage());
         }
     }
 
-    function setQueryDep($sql) {
 
-        if ($this->conn->query($sql)) {
-            
-        } else {
-            echo "Consulta fallida * $sql *: " . $this->conn->error;
-        }
-    }
+    //  Cambio dinámico de base de datos por dominio
+    private function changeDB() {
+        $server = str_replace("www.", "", $_SERVER['SERVER_NAME'] ?? "localhost");
 
-    function changeDB() {
-       
-        if($_SESSION==false)
-            session_start();
-
-        $server = str_replace("www.", "", $_SERVER['SERVER_NAME']);
-        
         if (!isset($_SESSION["db"]) || $_SESSION["db"] == "") {
-            if($server=="localhost"){
-                $server='connections.connectionslab.net';
+            if ($server == "localhost") {
+                $server = 'samalab.connectionslab.net';
             }
-            $sql = "SELECT * FROM clientes
-                    WHERE dominio = '" . $server . "'";
-            $data = $this->getQuery($sql);
-            $this->conn->select_db($data[0]->db);
 
-            $_SESSION["user_db"] = $data[0]->user_db;
-            $_SESSION["db"] = $data[0]->db;
-            $_SESSION["ruta"] = $data[0]->ruta;
-            $_SESSION["cliente"] = $data[0];
-            $_SESSION["server"] = $server;
+            $sql = "SELECT * FROM admin_connections.clientes WHERE dominio = :server";
 
-            
-        } else {
-            $this->conn->select_db($_SESSION["db"]);
+            try {
+                $data = $this->getQuery($sql, [":server" => $server]);
+                if ($data) {
+                    $_SESSION["db"]      = $data[0]->db;
+                    $_SESSION["user_db"] = $data[0]->user_db;
+                    $_SESSION["ruta"]    = $data[0]->ruta;
+                    $_SESSION["cliente"] = $data[0];
+                    $_SESSION["server"]  = $server;
+
+                    // Reabrir conexión con la DB específica
+                    $this->conn = new PDO(
+                        "pgsql:host={$this->host};port={$this->port};dbname={$_SESSION["db"]}",
+                        $_SESSION["user_db"],
+                        $this->password,
+                        [
+                            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                            PDO::ATTR_EMULATE_PREPARES   => false
+                        ]
+                    );
+                } else {
+                    echo "⚠️ No se encontró cliente con dominio: $server<br>";
+                }
+
+            } catch (PDOException $e) {
+                echo "❌ Error en changeDB: " . $e->getMessage() . "<br>";
+            }
         }
     }
 
-    function getLastId(){
-        return $this->conn->insert_id;
-    }
- 
-    function close() {
-        $this->conn->close();
+
+    // Último ID insertado (solo funciona con tablas que tengan secuencia/serial)
+    public function getLastId($sequence = null) {
+        return $this->conn->lastInsertId($sequence);
     }
 
+    public function close() {
+        $this->conn = null;
+    }
+
+    private function logError($sql, $msg) {
+        if (strpos(strtoupper($_SESSION["usuario"] ?? ""), "CONNECTIONS") !== false) {
+            echo "❌ Consulta fallida * $sql * → $msg<br>";
+        }
+    }
 }
-new Conexion();
 ?>

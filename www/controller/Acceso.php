@@ -33,8 +33,9 @@ class Acceso {
         
         $usuario = new Usuarios();
         
+
         $datos = $usuario->getUsuario($user, $pass);
-        
+        print_r($datos);
         if (count($datos) > 0) {
           
             session_start();

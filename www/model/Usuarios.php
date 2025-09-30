@@ -12,14 +12,39 @@ class Usuarios {
 
     function getUsuario($user, $pass) {
 
-        $sql = "SELECT usuario.*,sucursal.id_cliente,usuario.acceso_sucursales,
+        /*$sql = "SELECT usuario.*,sucursal.id_cliente,usuario.acceso_sucursales,
             sucursal.nombre as nombre_sucursal   
             FROM usuario
             INNER JOIN sucursal ON (sucursal.id = usuario.id_sucursal)
             INNER JOIN cliente ON (cliente.id = sucursal.id_cliente)
             WHERE usuario.usuario = '$user' AND usuario.contraseña = '$pass' AND ((NOW() >= TIME(usuario.entrada_trabajo)   AND NOW() <= TIME(usuario.salida_trabajo)) OR usuario.id_tipo_empleado = 1) AND usuario.activo = 1 AND cliente.inactivo = 0";
+        */
+        $sql = "SELECT usuario.*,
+               sucursal.id_cliente,
+               usuario.acceso_sucursales,
+               sucursal.nombre AS nombre_sucursal   
+            FROM admin_samalab2025.usuario
+            INNER JOIN admin_samalab2025.sucursal ON sucursal.id = usuario.id_sucursal
+            INNER JOIN admin_samalab2025.cliente  ON cliente.id = sucursal.id_cliente
+            WHERE usuario.usuario = :usuario  
+            AND usuario.\"contraseña\" = :contrasena 
+            AND (
+                    (CURRENT_TIME >= usuario.entrada_trabajo 
+                    AND CURRENT_TIME <= usuario.salida_trabajo) 
+                    OR usuario.id_tipo_empleado = 1
+                )
+            AND usuario.activo = 1 
+            AND cliente.inactivo = 0";
 
-        $data = $this->conexion->getQuery($sql);
+        $params = [
+            ":usuario"   => $user,
+            ":contrasena"=> $pass
+        ];
+
+        $data = $this->conexion->getQuery($sql, $params);
+        echo '----';
+        print_r( $data);
+        echo '----';
         return $data;
     }
 
