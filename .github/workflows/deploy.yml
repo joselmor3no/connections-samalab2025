@@ -21,7 +21,7 @@ jobs:
       - name: Deploy code to server
         run: |
           ssh -o StrictHostKeyChecking=no root@66.179.190.69 "
-            cd /var/www/connections-samalab2025 &&
+            cd /var/www/vhosts/connectionshos.net/httpdocs/connections-samalab2025 &&
             git pull origin main &&
             echo 'Código actualizado en el servidor'
           "
