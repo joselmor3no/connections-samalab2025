@@ -1,0 +1,28 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main   # se ejecuta al hacer push en main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy code to server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@TU_IP_DEL_SERVIDOR "
+            cd /var/www/connections-samalab2025 &&
+            git pull origin main &&
+            echo 'Código actualizado en el servidor'
+          "
+
