@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy code to server
         run: |
-          ssh -o StrictHostKeyChecking=no root@TU_IP_DEL_SERVIDOR "
+          ssh -o StrictHostKeyChecking=no root@66.179.190.69 "
             cd /var/www/connections-samalab2025 &&
             git pull origin main &&
             echo 'Código actualizado en el servidor'
