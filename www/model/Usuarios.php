@@ -35,7 +35,7 @@ class Usuarios {
                 )
             AND usuario.activo = 1 
             AND cliente.inactivo = 0";
-
+echo $sql;
         $params = [
             ":usuario"   => $user,
             ":contrasena"=> $pass
